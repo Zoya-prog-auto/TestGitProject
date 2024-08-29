@@ -83,7 +83,6 @@ def test_create_user_without_job():
 
 @allure.suite('Проверка создания и изменения данных пользователей')
 @allure.title('Проверяем обновление данных пользователя с помощью запроса PUT')
-
 def test_update_user_with_name_and_job():
     with allure.step('Отправляем тело запроса'):
         body = {
