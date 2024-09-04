@@ -9,6 +9,7 @@ SINGLE_USER = "api/users/2"
 EMAIL_ENDS = "@reqres.in"
 AVATAR_ENDS = "-image.jpg"
 NOT_FOUND_USER = "api/users/23"
+DELAYED_REQUEST = "api/users?delay=3"
 
 @allure.suite('Проверка запросов данных пользователей')
 @allure.title('Проверяем получение списка пользователей')
@@ -44,3 +45,8 @@ def test_user_not_found():
         response = httpx.get(BASE_URL + NOT_FOUND_USER)
     with allure.step('Проверяем код ответа'):
         assert response.status_code == 404
+
+def test_delayed_user_list():
+    response=httpx.get(BASE_URL + DELAYED_REQUEST, timeout=4)
+    assert response.status_code == 200
+
